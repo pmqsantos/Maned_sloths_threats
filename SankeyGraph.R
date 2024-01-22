@@ -1,19 +1,19 @@
 #Title: Sankey chart 
 #Author: Paloma M Santos
 #Data: 01/22/2024
+#From: From paper - What, where, and how: a spatiotemporally explicit analysis of the drivers of habitat loss within the range of maned three-toed sloths (Bradypus torquatus and Bradypus crinitus)
+#https://onlinelibrary.wiley.com/doi/full/10.1111/mam.12342
 
 
-#### Usando o pacote Network D3
+library(networkD3) #to create Sankeychart
+library (gridExtra) #Miscellaneous Functions for "Grid" Graphics 
+library(htmlwidgets) #add graph title
+library(htmltools) #add graph title
 
-#Para cada espécie:
-
-library(networkD3)
-library (gridExtra)
-
-# Selecionar a segunda planilha
+# Select the corresponding sheet in the excel spreadsheet
 SankeyTrans <- DriversTable[[7]]
 
-# Criar um conjunto de dados para a Bradypus torquatus
+# Create a dataset for Bradypus torquatus
 nodes_Bradypustorquatus <- data.frame(name = unique(c(as.character
                                                       (SankeyTrans$FirstYear
                                                         [SankeyTrans$Species == "Bradypus torquatus"]),
@@ -45,7 +45,7 @@ links_Bradypuscrinitus <- data.frame(
 colorJS <- paste('d3.scaleOrdinal().range(["#458B00", "#A2CD5A", 
 "#8B0000","#FF7F50", "#7FCD9A", "#B8860B",                        "#009ACD", "#9BCD9B"])')
 
-# Criar o Sankey diagram 
+# Create the Sankey diagram 
 Bt <- sankeyNetwork(
   Links = links_Bradypustorquatus,
   Nodes = nodes_Bradypustorquatus,
@@ -75,3 +75,6 @@ Bc <- sankeyNetwork(
   colourScale = colorJS,
   iterations = 0
 )
+
+sankey_BT <- htmlwidgets::prependContent(Bt, htmltools::tags$h1("Bradypus torquatus"))
+sankey_BC <- htmlwidgets::prependContent(Bc, htmltools::tags$h1("Bradypus crinitus"))
