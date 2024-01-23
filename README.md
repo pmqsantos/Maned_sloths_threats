@@ -1,4 +1,5 @@
-Access the paper: https://onlinelibrary.wiley.com/doi/full/10.1111/mam.12342
+What, where, and how: a spatiotemporally explicit analysis of the drivers of habitat loss within the range of maned three-toed sloths (<i>Bradypus</i> torquatus and <i>Bradypus crinitus</i>)
+Access the full paper: https://onlinelibrary.wiley.com/doi/full/10.1111/mam.12342
 
 Interactive Sankey graphics can be accessed via the following links: 
 
